@@ -18,6 +18,8 @@ RUN python -m app.train
 
 # Non-root security best practice
 RUN useradd -m -u 10001 appuser
+# Ensure the model directory is accessible by appuser
+RUN chown -R appuser:appuser /app
 USER appuser
 
 EXPOSE 8000
